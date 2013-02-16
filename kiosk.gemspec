@@ -18,12 +18,6 @@ Gem::Specification.new do |s|
   s.files = [
     "app/controllers/kiosk/navigations_controller.rb",
     "app/helpers/kiosk/application_helper.rb",
-    "app/models/kiosk/asset.rb",
-    "app/models/kiosk/category.rb",
-    "app/models/kiosk/navigation.rb",
-    "app/models/kiosk/navigation_type.rb",
-    "app/models/kiosk/post.rb",
-    "app/models/kiosk/preview.rb",
     "app/views/bhf/entries/form/belongs_to/_category.html.haml",
     "app/views/bhf/entries/form/column/_image.html.haml",
     "app/views/bhf/entries/form/column/_s3_file.html.haml",
@@ -36,13 +30,18 @@ Gem::Specification.new do |s|
     "config/locales/de.yml",
     "config/locales/en.yml",
     "config/routes.rb",
+    "lib/actives/asset.rb",
+    "lib/actives/category.rb",
+    "lib/actives/navigation.rb",
+    "lib/actives/navigation_type.rb",
+    "lib/actives/post.rb",
+    "lib/actives/preview.rb",
     "lib/actives/static.rb",
     "lib/apdown.rb",
     "lib/kiosk.rb",
     "lib/rails/generators/kiosk/templates/initializer.rb",
     "vendor/assets/javascripts/kiosk/classes/NaviAdmin.js",
-    "vendor/assets/javascripts/kiosk/kiosk.js",
-    "vendor/assets/stylesheets/kiosk/kiosk.css.sass"
+    "vendor/assets/stylesheets/kiosk/application.css.sass"
   ]
   s.homepage = "http://github.com/antpaw/kiosk"
   s.require_paths = ["lib"]
