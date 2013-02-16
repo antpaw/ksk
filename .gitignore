@@ -1,0 +1,4 @@
+.sass-cache/
+pkg/
+doc/
+.yardoc/
