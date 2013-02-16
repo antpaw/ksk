@@ -10,7 +10,7 @@ begin
   require 'jeweler'
 
   Jeweler::Tasks.new do |gem|
-    gem.name = 'kiosk'
+    gem.name = 'kiosker'
     gem.summary = 'CMS for bhf'
     gem.description = 'Fast and friendly'
     gem.email = 'anton.pawlik@gmail.com'
