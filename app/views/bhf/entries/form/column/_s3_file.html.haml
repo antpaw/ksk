@@ -1,0 +1,10 @@
+= node f, field do
+  - if f.object.photo.file?
+    - if false
+      = image_tag f.object.photo.url, class: 'uploaded_image'
+    - else
+      = link_to file, file, class: 'uploaded_file'
+    .file_delete
+      = f.check_box :delete_photo
+      = f.label :delete_photo, t('bhf.helpers.file.delete')
+  = f.file_field field.name

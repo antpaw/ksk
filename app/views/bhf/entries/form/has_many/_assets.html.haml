@@ -1,0 +1,37 @@
+- if f.object.assets.any?
+  = node f, field do
+    %h3 Bilder:
+    %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
+      - f.object.assets.only_images.each do |asset|
+        %li{id: "#{asset.id}_images"}
+          = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset}
+    
+    %h3 Dateien:
+    %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
+      - f.object.assets.only_data_files.each do |asset|
+        %li{id: "#{asset.id}_data_files"}
+          = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset}
+
+= node f, field do
+  .array_holder
+    = f.fields_for field.name, Asset.new do |a|
+      = a.file_field :file
+
+
+:javascript
+  $$('.assets_list').each(function(x){
+    new Sortables(x, {
+    	handle: '.handle',
+    	onStart: function(element, clone){
+    		element.addClass('dragged');
+    	},
+    	onComplete: function(element){
+    		element.removeClass('dragged');
+    		new Request({
+    			method: 'put',
+    			url: this.element.getParent('ol').get('data-sort-url')
+    		}).send({data: {order: this.serialize()}});
+    	}
+    });
+    
+  });

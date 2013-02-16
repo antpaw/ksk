@@ -1,12 +1,26 @@
-require 'engine' if defined?(Rails) && Rails::VERSION::MAJOR == 3
-# require 'kiosk/i18n'
-# require 'kiosk/active_record/active_record'
-# require 'kiosk/active_record/upload'
-# require 'kiosk/mongoid/document'
-# require 'kiosk/view_helpers'
-# require 'kiosk/data'
-# require 'kiosk/platform'
-# require 'kiosk/settings'
-# require 'kiosk/pagination'
-# require 'kiosk/form'
+require 'stringex'
 
+module Kiosk
+  class Engine < Rails::Engine
+    
+    config.css << 'kiosk/application'
+    
+    config.navigation_routes = lambda {
+      namespace :kiosk, path: Bhf::Engine.config.mount_at do
+        resources :navigations, only: [:create] do
+          put :sort, on: :collection
+        end
+      end
+    }
+    
+  end
+end
+
+require 'apdown'
+require 'actives/asset'
+require 'actives/category'
+require 'actives/navigation'
+require 'actives/navigation_type'
+require 'actives/post'
+require 'actives/preview'
+require 'actives/static'

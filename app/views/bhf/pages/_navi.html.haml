@@ -1,0 +1,59 @@
+:ruby
+  def p_recursive_navi(navis, current_level = 0, max_level = 99, ul = 'ul', first_wrap = '')
+    a = "\n <#{ul}#{first_wrap}>\n"
+    navis.each do |navi|
+      x = link_to 'edit', edit_bhf_entry_path('navigation', navi)
+      y = link_to 'delete', bhf_entry_path('navigation', navi), :method => :delete, :confirm => t('bhf.helpers.promts.confirm')
+      a += " <li id='navigation_#{navi.id}'><div><span class='title'>#{navi.title}</span> <span class='links'>#{x} #{y}</span></div>"
+      if current_level <= max_level and navi.children.any?
+        a += p_recursive_navi(navi.children, current_level+1, max_level, ul)
+      end
+      a += "</li> "
+    end
+    a += "</#{ul}> "
+  end
+  
+
+#content.navi
+  = p_recursive_navi(Navigation.top_level, 0, 99, 'ol', ' id="tree" class="multi_grid"').html_safe  
+
+
+= javascript_include_tag 'kiosk/classes/NaviAdmin'
+:javascript
+  var naviA = new NaviAdmin({
+    elemTree: $('tree'),
+    onItemDropped: function(item, parent, itemId, parentId){
+      var queryParams = {
+        '_method': 'put',
+        id: itemId,
+        parent_id: parentId
+      };
+      queryParams[this.getNaviName()] = this.getIdPositions();
+      
+      new Request({
+          url: '#{sort_kiosk_navigations_path}'
+      }).post(queryParams);
+    }
+  });
+  $$('#navigation_platform .create a').addEvent('click', function(e){
+    e.preventDefault();
+    var name = prompt('Name', '');
+    if ( ! name) { return; }
+    
+    var naviName = naviA.getNaviName();
+    var queryParams = {};
+    queryParams[naviName] = {
+      title: name
+    };
+    new Request({
+        url: '#{kiosk_navigations_path}',
+        onSuccess: function(responseText){
+          new Element('li', {
+            'id': naviName+'_'+responseText,
+            'html': '<div> <span class="title">'+name+'</span> <span class="links">#{link_to 'edit', edit_bhf_entry_path('navigation', 'NAVIID')} #{link_to 'delete', bhf_entry_path('navigation', 'NAVIID'), method: :delete, data: {confirm: t('bhf.helpers.promts.confirm')}}</span></div>'.replace(/NAVIID/g, responseText)
+          })
+          .inject($('tree').getElement('li'), 'before');
+          naviA.reInit();
+        }
+    }).post(queryParams);
+  });

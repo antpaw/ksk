@@ -1,0 +1,15 @@
+- data_source ||= field.reflection.klass.all
+- fk = field.reflection.foreign_key
+.node
+  .label= f.label fk
+  .input
+    = f.select fk, options_from_collection_for_select(data_source, :id, :to_bhf_s, f.object.send(fk))#, include_blank: true
+    = render partial: 'bhf/helper/field_errors', locals: {f: f, field: fk}
+    
+:javascript
+  window.addEvent('domready', function(){
+    var x = function(e){
+      $('post_event_id').getParent('.node').toggleClass('hide', this.value !== '2');
+    };
+    x.call($('post_category_id').addEvent('change', x));
+  });

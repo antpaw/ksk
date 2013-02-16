@@ -1,0 +1,19 @@
+= f.fields_for field.name, asset do |a|
+  - if asset.file.file?
+    .position_handle.float_left x
+    - if asset.is_image?
+      = image_tag asset.file.url(:medium), class: 'uploaded_image float_left'
+    - else
+      = link_to asset.file_file_name, asset.file.url, class: 'uploaded_image float_left'
+      - if asset.has_preview?
+        = link_to edit_bhf_entry_path('previews', asset.preview), class: 'float_left' do
+          = image_tag asset.preview_file.url(:thumb), class: 'uploaded_image'
+      - else
+        = link_to 'Vorschaubild hochladen', new_bhf_entry_path('previews', asset_id: asset.id), class: 'float_left'
+
+    .file_delete.float_right
+      = a.check_box :_destroy
+      = a.label :_destroy, t('bhf.helpers.file.delete')
+      
+      
+    %hr
