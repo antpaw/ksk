@@ -4,13 +4,13 @@
     %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
       - f.object.assets.only_images.each do |asset|
         %li{id: "#{asset.id}_images"}
-          = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset}
+          = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: true}
     
     %h3 Dateien:
     %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
       - f.object.assets.only_data_files.each do |asset|
         %li{id: "#{asset.id}_data_files"}
-          = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset}
+          = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: true}
 
 = node f, field do
   .array_holder
@@ -19,8 +19,8 @@
 
 
 :javascript
-  $$('.assets_list').each(function(x){
-    new Sortables(x, {
+  $$('.assets_list').each(function(elem){
+    new Sortables(elem, {
     	handle: '.handle',
     	onStart: function(element, clone){
     		element.addClass('dragged');
@@ -33,5 +33,4 @@
     		}).send({data: {order: this.serialize()}});
     	}
     });
-    
   });

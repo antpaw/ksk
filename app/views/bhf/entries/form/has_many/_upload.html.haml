@@ -1,6 +1,7 @@
 = f.fields_for field.name, asset do |a|
   - if asset.file.file?
-    .position_handle.float_left x
+    - if allow_position
+      .position_handle.float_left 
     - if asset.is_image?
       = image_tag asset.file.url(:medium), class: 'uploaded_image float_left'
     - else
@@ -15,5 +16,5 @@
       = a.check_box :_destroy
       = a.label :_destroy, t('bhf.helpers.file.delete')
       
-      
-    %hr
+    - if allow_position
+      %hr
