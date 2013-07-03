@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "ksk"
-  s.version = "0.1.0"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anton Pawlik"]
@@ -44,7 +44,7 @@ Gem::Specification.new do |s|
     "vendor/assets/javascripts/ksk/classes/NaviAdmin.js",
     "vendor/assets/stylesheets/ksk/application.css.sass"
   ]
-  s.homepage = "http://github.com/antpaw/kiosk"
+  s.homepage = "http://github.com/antpaw/ksk"
   s.require_paths = ["lib"]
   s.rubyforge_project = "nowarning"
   s.rubygems_version = "1.8.25"
