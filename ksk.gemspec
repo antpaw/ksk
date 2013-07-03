@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "ksk"
-  s.version = "0.1.1"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anton Pawlik"]
@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = [
-    "app/controllers/kiosk/navigations_controller.rb",
-    "app/helpers/kiosk/application_helper.rb",
+    "app/controllers/ksk/navigations_controller.rb",
+    "app/helpers/ksk/application_helper.rb",
     "app/views/bhf/entries/form/belongs_to/_category.html.haml",
     "app/views/bhf/entries/form/column/_image.html.haml",
     "app/views/bhf/entries/form/column/_s3_file.html.haml",
@@ -39,10 +39,10 @@ Gem::Specification.new do |s|
     "lib/actives/preview.rb",
     "lib/actives/static.rb",
     "lib/apdown.rb",
-    "lib/kiosk.rb",
-    "lib/rails/generators/kiosk/templates/initializer.rb",
-    "vendor/assets/javascripts/kiosk/classes/NaviAdmin.js",
-    "vendor/assets/stylesheets/kiosk/application.css.sass"
+    "lib/ksk.rb",
+    "lib/rails/generators/ksk/templates/initializer.rb",
+    "vendor/assets/javascripts/ksk/classes/NaviAdmin.js",
+    "vendor/assets/stylesheets/ksk/application.css.sass"
   ]
   s.homepage = "http://github.com/antpaw/kiosk"
   s.require_paths = ["lib"]

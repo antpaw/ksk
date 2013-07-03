@@ -3,10 +3,10 @@ require 'stringex'
 module Ksk
   class Engine < Rails::Engine
     
-    config.css << 'kiosk/application'
+    config.css << 'ksk/application'
     
     config.navigation_routes = lambda {
-      namespace :kiosk, path: Bhf::Engine.config.mount_at do
+      namespace :ksk, path: Bhf::Engine.config.mount_at do
         resources :navigations, only: [:create] do
           put :sort, on: :collection
         end

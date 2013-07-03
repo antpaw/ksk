@@ -18,7 +18,7 @@
   = p_recursive_navi(Navigation.top_level, 0, 99, 'ol', ' id="tree" class="multi_grid"').html_safe  
 
 
-= javascript_include_tag 'kiosk/classes/NaviAdmin'
+= javascript_include_tag 'ksk/classes/NaviAdmin'
 :javascript
   var naviA = new NaviAdmin({
     elemTree: $('tree'),
@@ -31,7 +31,7 @@
       queryParams[this.getNaviName()] = this.getIdPositions();
       
       new Request({
-          url: '#{sort_kiosk_navigations_path}'
+          url: '#{sort_ksk_navigations_path}'
       }).post(queryParams);
     }
   });
@@ -46,7 +46,7 @@
       title: name
     };
     new Request({
-        url: '#{kiosk_navigations_path}',
+        url: '#{ksk_navigations_path}',
         onSuccess: function(responseText){
           new Element('li', {
             'id': naviName+'_'+responseText,

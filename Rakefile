@@ -16,7 +16,7 @@ begin
     gem.email = 'anton.pawlik@gmail.com'
     gem.authors = ['Anton Pawlik']
     gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*", "vendor/assets/**/*"]
-    gem.homepage = 'http://github.com/antpaw/kiosk'
+    gem.homepage = 'http://github.com/antpaw/ksk'
     gem.rubyforge_project = 'nowarning'
     gem.add_dependency 'bhf', '>= 0.5.0'
     gem.add_dependency 'stringex'
