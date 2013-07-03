@@ -18,7 +18,7 @@ begin
     gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*", "vendor/assets/**/*"]
     gem.homepage = 'http://github.com/antpaw/kiosk'
     gem.rubyforge_project = 'nowarning'
-    gem.add_dependency 'bhf', '>= 0.4.30'
+    gem.add_dependency 'bhf', '>= 0.5.0'
     gem.add_dependency 'stringex'
   end
 

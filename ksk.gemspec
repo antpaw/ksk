@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anton Pawlik"]
-  s.date = "2013-02-16"
+  s.date = "2013-07-03"
   s.description = "Fast and friendly"
   s.email = "anton.pawlik@gmail.com"
   s.extra_rdoc_files = [
@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "app/views/bhf/entries/form/has_many/__assets.html.haml",
     "app/views/bhf/entries/form/has_many/_assets.html.haml",
     "app/views/bhf/entries/form/has_many/_upload.html.haml",
+    "app/views/bhf/entries/form/has_one/_asset.html.haml",
     "app/views/bhf/pages/_navi.html.haml",
     "app/views/bhf/pages/macro/column/_extern_link.haml",
     "config/locales/de.yml",
@@ -46,21 +47,21 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/antpaw/kiosk"
   s.require_paths = ["lib"]
   s.rubyforge_project = "nowarning"
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.25"
   s.summary = "CMS for bhf"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<bhf>, [">= 0.4.30"])
+      s.add_runtime_dependency(%q<bhf>, [">= 0.5.0"])
       s.add_runtime_dependency(%q<stringex>, [">= 0"])
     else
-      s.add_dependency(%q<bhf>, [">= 0.4.30"])
+      s.add_dependency(%q<bhf>, [">= 0.5.0"])
       s.add_dependency(%q<stringex>, [">= 0"])
     end
   else
-    s.add_dependency(%q<bhf>, [">= 0.4.30"])
+    s.add_dependency(%q<bhf>, [">= 0.5.0"])
     s.add_dependency(%q<stringex>, [">= 0"])
   end
 end
