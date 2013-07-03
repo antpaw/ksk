@@ -1,4 +1,4 @@
-module Kiosk
+module Ksk
   module Post
     extend ActiveSupport::Concern
 

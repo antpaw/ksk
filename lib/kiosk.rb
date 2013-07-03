@@ -1,6 +1,6 @@
 require 'stringex'
 
-module Kiosk
+module Ksk
   class Engine < Rails::Engine
     
     config.css << 'kiosk/application'

@@ -1,4 +1,4 @@
-class Kiosk::NavigationsController < Bhf::ApplicationController
+class Ksk::NavigationsController < Bhf::ApplicationController
 
   def sort
     Navigation.sort_items(params[:navigation])

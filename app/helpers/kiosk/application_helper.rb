@@ -1,4 +1,4 @@
-module Kiosk
+module Ksk
   module ApplicationHelper
 
     def recursive_navi(navis, current_level = 0, max_level = 99)

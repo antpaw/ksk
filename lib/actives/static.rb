@@ -1,4 +1,4 @@
-module Kiosk
+module Ksk
   module Static
     extend ActiveSupport::Concern
 

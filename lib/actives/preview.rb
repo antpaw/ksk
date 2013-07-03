@@ -1,4 +1,4 @@
-module Kiosk
+module Ksk
   module Preview
     extend ActiveSupport::Concern
 

@@ -1,5 +1,5 @@
 # encoding: UTF-8
-module Kiosk
+module Ksk
   module Navigation
     extend ActiveSupport::Concern
 

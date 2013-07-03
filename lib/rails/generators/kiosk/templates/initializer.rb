@@ -1,4 +1,4 @@
-module Kiosk
+module Ksk
   class Engine < Rails::Engine
 
     # config.test = 1
