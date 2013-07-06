@@ -10,16 +10,16 @@ module Ksk
 
       before_validation :static_setter
 
-      default_scope :order => 'position ASC, created_at DESC'
+      default_scope -> {order 'position ASC, created_at DESC'}
 
       belongs_to :static
       belongs_to :navigation_type
       belongs_to :parent, :foreign_key => 'parent_id', :class_name => 'Navigation'
       has_many   :children, :foreign_key => 'parent_id', :class_name => 'Navigation', :dependent => :delete_all
 
-      scope :top_level, where(parent_id: 0)
+      scope :top_level, -> {where(parent_id: 0)}
 
-      scope :not_hidden, where(hidden: false)
+      scope :not_hidden, -> {where(hidden: false)}
 
       before_save :set_slug, :set_link
     end

@@ -7,7 +7,7 @@ module Ksk
 
       belongs_to :fileable, polymorphic: true
 
-      default_scope order: 'position ASC, created_at DESC'
+      default_scope -> {order 'position ASC, created_at DESC'}
 
       has_one :preview
       before_create :set_last_position
@@ -16,12 +16,12 @@ module Ksk
       #validates_attachment :file, :content_type => { :content_type => IMGTYPE }
       IMGTYPE = ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png', 'image/tif', 'image/gif']
 
-      scope :only_images, where(file_content_type: IMGTYPE)
-      scope :first_image, only_images.limit(1)
-      scope :other_images, only_images.offset(1)
+      scope :only_images, -> {where(file_content_type: IMGTYPE)}
+      scope :first_image, -> {only_images.limit(1)}
+      scope :other_images, -> {only_images.offset(1)}
 
-      scope :only_data_files, where(['file_content_type not in (?)', IMGTYPE])
-      scope :first_data_files, only_data_files.limit(1)
+      scope :only_data_files, -> {where(['file_content_type not in (?)', IMGTYPE])}
+      scope :first_data_files, -> {only_data_files.limit(1)}
 
       before_file_post_process :allow_only_images
     end

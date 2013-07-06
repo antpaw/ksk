@@ -21,11 +21,13 @@ module Ksk
     end
 
     def md(text)
+      return '' if text.blank?
       markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(), fenced_code_blocks: true, autolink: true)
       markdown.render(text).html_safe
     end
 
     def mdap(text, images, data_files)
+      return '' if text.blank?
       t = place_images(text, images)
       t = place_data_files(t, data_files)
       md(t)
