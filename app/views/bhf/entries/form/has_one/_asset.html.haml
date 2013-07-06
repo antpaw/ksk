@@ -1,8 +1,9 @@
-= node f, field do
-  = f.fields_for field.name, Asset.new do |a|
-    - if ! f.object.send(field.name).nil?
-      = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: f.object.send(field.name), allow_position: false}
-    %div
-    = a.file_field :file
-    %hr
+- unless @quick_edit
+  = node f, field do
+    = f.fields_for field.name, Asset.new do |a|
+      - if ! f.object.send(field.name).nil?
+        = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: f.object.send(field.name), allow_position: false}
+      %div
+      = a.file_field :file
+      %hr
 

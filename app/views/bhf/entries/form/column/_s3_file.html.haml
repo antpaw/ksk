@@ -7,4 +7,5 @@
     .file_delete
       = f.check_box :delete_photo
       = f.label :delete_photo, t('bhf.helpers.file.delete')
-  = f.file_field field.name
+  - unless @quick_edit
+    = f.file_field field.name

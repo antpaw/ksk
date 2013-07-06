@@ -12,10 +12,11 @@
         %li{id: "#{asset.id}_data_files"}
           = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: true}
 
-= node f, field do
-  .array_holder
-    = f.fields_for field.name, Asset.new do |a|
-      = a.file_field :file
+- unless @quick_edit
+  = node f, field do
+    .array_holder
+      = f.fields_for field.name, Asset.new do |a|
+        = a.file_field :file
 
 
 :javascript
