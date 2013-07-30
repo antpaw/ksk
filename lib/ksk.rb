@@ -5,7 +5,7 @@ module Ksk
     
     config.css << 'ksk/application'
     
-    config.navigation_routes = lambda {
+    config.ksk_routes = lambda {
       namespace :ksk, path: Bhf::Engine.config.mount_at do
         resources :navigations, only: [:create] do
           put :sort, on: :collection
