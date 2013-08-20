@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "ksk"
-  s.version = "0.1.5"
+  s.version = "0.1.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anton Pawlik"]
-  s.date = "2013-07-30"
+  s.date = "2013-08-20"
   s.description = "Fast and friendly"
   s.email = "anton.pawlik@gmail.com"
   s.extra_rdoc_files = [
@@ -47,11 +47,11 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/antpaw/ksk"
   s.require_paths = ["lib"]
   s.rubyforge_project = "nowarning"
-  s.rubygems_version = "1.8.25"
+  s.rubygems_version = "2.0.6"
   s.summary = "CMS for bhf"
 
   if s.respond_to? :specification_version then
-    s.specification_version = 3
+    s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<bhf>, [">= 0.5.0"])
