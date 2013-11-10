@@ -14,46 +14,10 @@
   end
   
 
-#content.navi
-  = p_recursive_navi(Navigation.top_level, 0, 99, 'ol', ' id="tree" class="multi_grid"').html_safe  
-
-
-= javascript_include_tag 'ksk/classes/NaviAdmin'
-:javascript
-  var naviA = new NaviAdmin({
-    elemTree: $('tree'),
-    onItemDropped: function(item, parent, itemId, parentId){
-      var queryParams = {
-        '_method': 'put',
-        id: itemId,
-        parent_id: parentId
-      };
-      queryParams[this.getNaviName()] = this.getIdPositions();
-      
-      new Request({
-          url: '#{sort_ksk_navigations_path}'
-      }).post(queryParams);
-    }
-  });
-  $$('#navigation_platform .create a').addEvent('click', function(e){
-    e.preventDefault();
-    var name = prompt('Name', '');
-    if ( ! name) { return; }
-    
-    var naviName = naviA.getNaviName();
-    var queryParams = {};
-    queryParams[naviName] = {
-      title: name
-    };
-    new Request({
-        url: '#{ksk_navigations_path}',
-        onSuccess: function(responseText){
-          new Element('li', {
-            'id': naviName+'_'+responseText,
-            'html': '<div> <span class="title">'+name+'</span> <span class="links">#{link_to 'edit', edit_bhf_entry_path('navigation', 'NAVIID')} #{link_to 'delete', bhf_entry_path('navigation', 'NAVIID'), method: :delete, data: {confirm: t('bhf.helpers.promts.confirm')}}</span></div>'.replace(/NAVIID/g, responseText)
-          })
-          .inject($('tree').getElement('li'), 'before');
-          naviA.reInit();
-        }
-    }).post(queryParams);
-  });
+#content.navi.js_tree_holder
+  = p_recursive_navi(Navigation.top_level, 0, 99, 'ol', 'class="multi_grid js_tree_list"').html_safe  
+  
+  .template_data.hide{data: {:'update-path' => ksk_navigations_path, :'prompt-question' => I18n.t('ksk.navigation_sort.prompt_question')}}
+    = link_to 'edit', edit_bhf_entry_path('navigation', 'NAVIID')
+    = link_to 'delete', bhf_entry_path('navigation', 'NAVIID'), method: :delete, data: {confirm: t('bhf.helpers.promts.confirm')}
+  

@@ -1,2 +1,4 @@
 de:  
-  ksk: a
+  ksk:
+    navigation_sort:
+      prompt_question: Name eintragen

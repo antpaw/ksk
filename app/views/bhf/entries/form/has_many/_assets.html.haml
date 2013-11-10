@@ -19,19 +19,3 @@
         = a.file_field :file
 
 
-:javascript
-  $$('.assets_list').each(function(elem){
-    new Sortables(elem, {
-    	handle: '.handle',
-    	onStart: function(element, clone){
-    		element.addClass('dragged');
-    	},
-    	onComplete: function(element){
-    		element.removeClass('dragged');
-    		new Request({
-    			method: 'put',
-    			url: this.element.getParent('ol').get('data-sort-url')
-    		}).send({data: {order: this.serialize()}});
-    	}
-    });
-  });

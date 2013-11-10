@@ -1,2 +1,4 @@
-en:  
-  ksk: a
+de:  
+  ksk:
+    navigation_sort:
+      prompt_question: Enter the name
