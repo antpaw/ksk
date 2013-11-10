@@ -4,6 +4,7 @@ module Ksk
   class Engine < Rails::Engine
     
     config.css << 'ksk/application'
+    config.js << 'ksk/application'
     
     config.ksk_routes = lambda {
       namespace :ksk, path: Bhf::Engine.config.mount_at do
