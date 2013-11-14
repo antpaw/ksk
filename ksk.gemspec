@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "ksk"
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anton Pawlik"]
-  s.date = "2013-11-10"
+  s.date = "2013-11-14"
   s.description = "Fast and friendly"
   s.email = "anton.pawlik@gmail.com"
   s.extra_rdoc_files = [
@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
     "vendor/assets/stylesheets/ksk/application.css.sass"
   ]
   s.homepage = "http://github.com/antpaw/ksk"
+  s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubyforge_project = "nowarning"
   s.rubygems_version = "2.0.3"
