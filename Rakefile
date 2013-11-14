@@ -15,6 +15,7 @@ begin
     gem.description = 'Fast and friendly'
     gem.email = 'anton.pawlik@gmail.com'
     gem.authors = ['Anton Pawlik']
+    gem.licenses = 'MIT'
     gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*", "vendor/assets/**/*"]
     gem.homepage = 'http://github.com/antpaw/ksk'
     gem.rubyforge_project = 'nowarning'
