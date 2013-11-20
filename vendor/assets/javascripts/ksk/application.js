@@ -13,11 +13,11 @@ var kskInit = function(){
 				queryParams[this.getNaviName()] = this.getIdPositions();
 
 				new Request({
-					url: '#{sort_ksk_navigations_path}'
+					url: elem.get('data-update-url')
 				}).post(queryParams);
 			}
 		});
-		$$('#navigation_platform .create a').addEvent('click', function(e){
+		elem.getParent('.platform').getElements('.create a').addEvent('click', function(e){
 			e.preventDefault();
 			var tmpl = elem.getElement('.template_data');
 			var name = prompt(tmpl.get('data-prompt-question'), '');
@@ -35,7 +35,7 @@ var kskInit = function(){
 					  'id': naviName+'_'+responseText,
 					  'html': '<div> <span class="title">'+name+'</span> <span class="links">'+tmpl.get('html')+'</span></div>'.replace(/NAVIID/g, responseText)
 					})
-					.inject($('tree').getElement('li'), 'before');
+					.inject(elem.getElement('.js_tree_list li'), 'before');
 					naviA.reInit();
 				}
 			}).post(queryParams);

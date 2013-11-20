@@ -14,8 +14,8 @@
   end
   
 
-#content.navi.js_tree_holder
-  = p_recursive_navi(Navigation.top_level, 0, 99, 'ol', 'class="multi_grid js_tree_list"').html_safe  
+#content.navi.js_tree_holder{data: {:'update-url' => sort_ksk_navigations_path}}
+  = p_recursive_navi(Navigation.top_level, 0, 99, 'ol', ' class="multi_grid js_tree_list"').html_safe  
   
   .template_data.hide{data: {:'update-path' => ksk_navigations_path, :'prompt-question' => I18n.t('ksk.navigation_sort.prompt_question')}}
     = link_to 'edit', edit_bhf_entry_path('navigation', 'NAVIID')
