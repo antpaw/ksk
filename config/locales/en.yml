@@ -1,4 +1,18 @@
-de:  
+en:  
   ksk:
     navigation_sort:
       prompt_question: Enter the name
+      info: can be created and moved
+    asset:
+      list:
+        headline:
+          photos: 'Bilder:'
+          files: 'Dateien:'
+      photo_preview:
+        button:
+          edit: Bild bearbeiten
+      file_preview:
+        button:
+          edit: Edit preview
+          create: Add preview
+          download: Click here to download the file

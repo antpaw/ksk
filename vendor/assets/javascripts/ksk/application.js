@@ -17,9 +17,10 @@ var kskInit = function(){
 				}).post(queryParams);
 			}
 		});
-		elem.getParent('.platform').getElements('.create a').addEvent('click', function(e){
+		var platform = elem.getParent('.platform');
+		platform.getElements('.create a').addEvent('click', function(e){
 			e.preventDefault();
-			var tmpl = elem.getElement('.template_data');
+			var tmpl = platform.getElement('.template_data');
 			var name = prompt(tmpl.get('data-prompt-question'), '');
 			if ( ! name) { return; }
 
@@ -29,13 +30,13 @@ var kskInit = function(){
 				title: name
 			};
 			new Request({
-				url: elem.getElement('.template_data').get('data-update-path'),
+				url: platform.getElement('.template_data').get('data-update-path'),
 				onSuccess: function(responseText){
 					new Element('li', {
 					  'id': naviName+'_'+responseText,
 					  'html': '<div> <span class="title">'+name+'</span> <span class="links">'+tmpl.get('html')+'</span></div>'.replace(/NAVIID/g, responseText)
 					})
-					.inject(elem.getElement('.js_tree_list li'), 'before');
+					.inject(platform.getElement('.js_tree_list li'), 'before');
 					naviA.reInit();
 				}
 			}).post(queryParams);

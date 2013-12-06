@@ -52,10 +52,15 @@ module Ksk
 
     def place_data_files(text, data_files)
       place_content(text, data_files, 'file') do |asset, option|
-        link_to asset.file.url, class: asset.has_preview? ? :uploaded_file_preview : :uploaded_file do
+        link_to asset.file.url, title: asset.file.original_filename, class: asset.has_preview? ? :uploaded_file_preview : :uploaded_file do
           if asset.has_preview?
-            image_tag( asset.preview_file.url(:banner) )+
-            '<span>Hier klicken um die Datei herunter zu laden</span>'.html_safe
+            if asset.has_preview_image?
+              t_capition = !asset.preview.name.blank? ? asset.preview.name : t('ksk.asset.file_preview.button.download')
+              image_tag( asset.preview_file.url(:banner) )+
+              "<span>#{t_capition}</span>".html_safe
+            else
+              asset.preview.name
+            end
           else
             asset.file_file_name
           end

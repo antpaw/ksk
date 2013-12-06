@@ -38,7 +38,11 @@ module Ksk
     end
 
     def has_preview?
-      preview && preview.assets.any?
+      preview && (preview.assets.any? || !preview.name.blank?)
+    end
+
+    def has_preview_image?
+      preview.assets.any? and preview.assets.first.file
     end
 
     def preview_file

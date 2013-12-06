@@ -2,8 +2,8 @@
   def p_recursive_navi(navis, current_level = 0, max_level = 99, ul = 'ul', first_wrap = '')
     a = "\n <#{ul}#{first_wrap}>\n"
     navis.each do |navi|
-      x = link_to 'edit', edit_bhf_entry_path('navigation', navi)
-      y = link_to 'delete', bhf_entry_path('navigation', navi), :method => :delete, :confirm => t('bhf.helpers.promts.confirm')
+      x = link_to 'edit', edit_bhf_entry_path('navigation', navi), class: 'edit icon'
+      y = link_to 'delete', bhf_entry_path('navigation', navi), :method => :delete, :confirm => t('bhf.helpers.promts.confirm'), class: 'delete icon'
       a += " <li id='navigation_#{navi.id}'><div><span class='title'>#{navi.title}</span> <span class='links'>#{x} #{y}</span></div>"
       if current_level <= max_level and navi.children.any?
         a += p_recursive_navi(navi.children, current_level+1, max_level, ul)
@@ -14,10 +14,19 @@
   end
   
 
-#content.navi.js_tree_holder{data: {:'update-url' => sort_ksk_navigations_path}}
-  = p_recursive_navi(Navigation.top_level, 0, 99, 'ol', ' class="multi_grid js_tree_list"').html_safe  
-  
+%table.navigation_capiton.data_table{id: "#{platform.name}_platform", class: (platform.custom_columns? ? :custom_columns : :default_columns)}
+  %caption
+    %h4= platform.title
+    %p.info= t('ksk.navigation_sort.info')
+    - unless platform.hide_create
+      %p.create= link_to new_t(platform), new_bhf_entry_path(platform.name), class: :alt_button
+    - unless platform.custom_partial
+      = render partial: 'search', locals: {platform: platform} if platform.search?
+
+.content_box
+  .navi.js_tree_holder{data: {:'update-url' => sort_ksk_navigations_path}}
+    = p_recursive_navi(Navigation.top_level, 0, 99, 'ol', ' class="multi_grid js_tree_list"').html_safe  
+
   .template_data.hide{data: {:'update-path' => ksk_navigations_path, :'prompt-question' => I18n.t('ksk.navigation_sort.prompt_question')}}
-    = link_to 'edit', edit_bhf_entry_path('navigation', 'NAVIID')
-    = link_to 'delete', bhf_entry_path('navigation', 'NAVIID'), method: :delete, data: {confirm: t('bhf.helpers.promts.confirm')}
-  
+    = link_to 'edit', edit_bhf_entry_path('navigation', 'NAVIID'), class: 'edit icon'
+    = link_to 'delete', bhf_entry_path('navigation', 'NAVIID'), method: :delete, data: {confirm: t('bhf.helpers.promts.confirm')}, class: 'delete icon'

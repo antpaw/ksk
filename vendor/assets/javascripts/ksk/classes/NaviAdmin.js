@@ -22,7 +22,7 @@ var NaviAdmin = new Class({
 	options: {/*
 		onItemDropped: $empty(item, parent, itemId, parentId),*/
 		elemTree: null,
-		dragSpan: new Element('span', {'class': 'drag'}),
+		dragSpan: new Element('span', {'class': 'icon handle drag'}),
 		pos_helper: new Element('li', {'class': 'pos_helper'})
 	},
 	

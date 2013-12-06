@@ -1,17 +1,22 @@
 - if f.object.assets.any?
   = node f, field do
-    %h3 Bilder:
-    %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
-      - f.object.assets.only_images.each do |asset|
-        %li{id: "#{asset.id}_images"}
-          = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: true}
+    - imgs = f.object.assets.only_images
+    - if imgs.any?
+      %h3= t('ksk.asset.list.headline.photos')
+      %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
+        - imgs.each do |asset|
+          %li{id: "#{asset.id}_images"}
+            = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: !@quick_edit}
     
-    %h3 Dateien:
-    %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
-      - f.object.assets.only_data_files.each do |asset|
-        %li{id: "#{asset.id}_data_files"}
-          = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: true}
+    - files = f.object.assets.only_data_files
+    - if files.any?
+      %h3= t('ksk.asset.list.headline.files')
+      %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
+        - files.each do |asset|
+          %li{id: "#{asset.id}_data_files"}
+            = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: !@quick_edit}
 
+  .clear
 - unless @quick_edit
   = node f, field do
     .array_holder

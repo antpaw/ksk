@@ -19,7 +19,7 @@ begin
     gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*", "vendor/assets/**/*"]
     gem.homepage = 'http://github.com/antpaw/ksk'
     gem.rubyforge_project = 'nowarning'
-    gem.add_dependency 'bhf', '>= 0.5.0'
+    gem.add_dependency 'bhf', '>= 0.6.13'
     gem.add_dependency 'stringex'
   end
 
