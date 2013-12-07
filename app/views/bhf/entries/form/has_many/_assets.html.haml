@@ -2,7 +2,7 @@
   = node f, field do
     - imgs = f.object.assets.only_images
     - if imgs.any?
-      %h3= t('ksk.asset.list.headline.photos')
+      %h4= t('ksk.asset.list.headline.photos')
       %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
         - imgs.each do |asset|
           %li{id: "#{asset.id}_images"}
@@ -10,7 +10,7 @@
     
     - files = f.object.assets.only_data_files
     - if files.any?
-      %h3= t('ksk.asset.list.headline.files')
+      %h4= t('ksk.asset.list.headline.files')
       %ol.assets_list{:'data-sort-url' => sort_bhf_entries_path('assets')}
         - files.each do |asset|
           %li{id: "#{asset.id}_data_files"}

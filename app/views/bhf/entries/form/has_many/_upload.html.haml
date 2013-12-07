@@ -5,13 +5,13 @@
 
     .file_delete.float_right
       = a.check_box :_destroy
-      = a.label :_destroy, t('bhf.helpers.file.delete')
-      
+      = a.label :_destroy, t(asset.is_image? ? 'bhf.helpers.image.delete' : 'bhf.helpers.file.delete')
+
     - if asset.is_image?
       = image_tag(asset.file.url(:medium), class: 'uploaded_image float_left')
-      = link_to t('ksk.asset.photo_preview.button.edit'), edit_bhf_entry_path('assets', asset.id), class: 'alt_button float_right'
+      = link_to t('ksk.asset.image_preview.button.edit'), edit_bhf_entry_path('assets', asset.id), class: 'alt_button float_right'
     - else
-      = link_to asset.file_file_name, asset.file.url, class: 'uploaded_image float_right'
+      = link_to asset.file_file_name, asset.file.url, class: 'uploaded_file float_left'
       - if asset.has_preview?
         = link_to t('ksk.asset.file_preview.button.edit'), edit_bhf_entry_path('previews', asset.preview), class: 'alt_button float_right'
       - else

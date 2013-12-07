@@ -6,9 +6,9 @@ de:
     asset:
       list:
         headline:
-          photos: 'Pictures:'
-          files: 'Files:'
-      photo_preview:
+          photos: 'Bilder'
+          files: 'Dateien'
+      image_preview:
         button:
           edit: Bild bearbeiten
       file_preview:

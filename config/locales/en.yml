@@ -6,11 +6,11 @@ en:
     asset:
       list:
         headline:
-          photos: 'Bilder:'
-          files: 'Dateien:'
-      photo_preview:
+          photos: 'Images'
+          files: 'Files'
+      image_preview:
         button:
-          edit: Bild bearbeiten
+          edit: Edit image
       file_preview:
         button:
           edit: Edit preview
