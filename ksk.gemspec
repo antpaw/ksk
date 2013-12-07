@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "ksk"
-  s.version = "0.2.4"
+  s.version = "0.2.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anton Pawlik"]
-  s.date = "2013-12-06"
+  s.date = "2013-12-07"
   s.description = "Fast and friendly"
   s.email = "anton.pawlik@gmail.com"
   s.extra_rdoc_files = [
@@ -18,8 +18,7 @@ Gem::Specification.new do |s|
   s.files = [
     "app/controllers/ksk/navigations_controller.rb",
     "app/helpers/ksk/application_helper.rb",
-    "app/views/bhf/entries/form/column/_image.html.haml",
-    "app/views/bhf/entries/form/column/_s3_file.html.haml",
+    "app/views/bhf/entries/form/column/_file.html.haml",
     "app/views/bhf/entries/form/column/_select_file_assets.html.haml",
     "app/views/bhf/entries/form/has_many/_assets.html.haml",
     "app/views/bhf/entries/form/has_many/_upload.html.haml",
