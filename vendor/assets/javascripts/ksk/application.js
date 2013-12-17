@@ -1,7 +1,7 @@
 //= require_tree ./classes
 
-var kskInit = function(){
-	$$('.js_tree_holder').each(function(elem){
+initHelper(function(scope){
+	scope.getElements('.js_tree_holder').each(function(elem){
 		var naviA = new NaviAdmin({
 			elemTree: elem.getElement('.js_tree_list'),
 			onItemDropped: function(item, parent, itemId, parentId){
@@ -43,7 +43,7 @@ var kskInit = function(){
 		});
 	});
 
-	$$('.assets_list').each(function(elem){
+	scope.getElements('.assets_list').each(function(elem){
 		new Sortables(elem, {
 			handle: '.handle',
 			onStart: function(element, clone){
@@ -58,10 +58,4 @@ var kskInit = function(){
 			}
 		});
 	});
-};
-
-window.addEvent('domready', kskInit);
-
-if (document.addEventListener) {
-	document.addEventListener('page:load', kskInit);
-}
+});
