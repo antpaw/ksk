@@ -3,16 +3,16 @@ require 'stringex'
 module Ksk
   class Engine < Rails::Engine
     
+    isolate_namespace Ksk
+    
     config.css << 'ksk/application'
     config.js << 'ksk/application'
     
-    config.ksk_routes = lambda {
-      namespace :ksk, path: Bhf::Engine.config.mount_at do
-        resources :navigations, only: [:create] do
-          put :sort, on: :collection
-        end
+    initializer 'ksk.action_controller' do |app|
+      ActiveSupport.on_load :action_controller do
+        helper Ksk::FrontendHelper
       end
-    }
+    end
     
   end
 end

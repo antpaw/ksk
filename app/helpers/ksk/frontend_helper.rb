@@ -1,5 +1,5 @@
 module Ksk
-  module ApplicationHelper
+  module FrontendHelper
 
     def recursive_navi(navis, current_level = 0, max_level = 99)
       a = ' <ul>'
