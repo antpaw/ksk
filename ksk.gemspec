@@ -5,19 +5,22 @@
 
 Gem::Specification.new do |s|
   s.name = "ksk"
-  s.version = "0.2.5"
+  s.version = "0.2.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anton Pawlik"]
-  s.date = "2013-12-07"
+  s.date = "2013-12-18"
   s.description = "Fast and friendly"
   s.email = "anton.pawlik@gmail.com"
   s.extra_rdoc_files = [
     "README.md"
   ]
   s.files = [
+    "app/assets/javascripts/ksk/application.js",
+    "app/assets/javascripts/ksk/classes/NaviAdmin.js",
+    "app/assets/stylesheets/ksk/application.css.sass",
     "app/controllers/ksk/navigations_controller.rb",
-    "app/helpers/ksk/application_helper.rb",
+    "app/helpers/ksk/frontend_helper.rb",
     "app/views/bhf/entries/form/column/_file.html.haml",
     "app/views/bhf/entries/form/column/_select_file_assets.html.haml",
     "app/views/bhf/entries/form/has_many/_assets.html.haml",
@@ -37,10 +40,7 @@ Gem::Specification.new do |s|
     "lib/actives/static.rb",
     "lib/apdown.rb",
     "lib/ksk.rb",
-    "lib/rails/generators/ksk/templates/initializer.rb",
-    "vendor/assets/javascripts/ksk/application.js",
-    "vendor/assets/javascripts/ksk/classes/NaviAdmin.js",
-    "vendor/assets/stylesheets/ksk/application.css.sass"
+    "lib/rails/generators/ksk/templates/initializer.rb"
   ]
   s.homepage = "http://github.com/antpaw/ksk"
   s.licenses = ["MIT"]
