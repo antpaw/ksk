@@ -58,4 +58,35 @@ initHelper(function(scope){
 			}
 		});
 	});
+	
+	
+	cropImages = scope.getElements('.js_crop_image');
+	if (cropImages.length) {
+		var cropInit = function(){
+			$.noConflict();
+			jQuery('.js_crop_image').each(function(){
+				var $cropImg = jQuery(this);
+				$cropImg.Jcrop({
+					onSelect: function(c){
+						$cropImg.parent().find('.js_cords_x').val(c.x);
+						$cropImg.parent().find('.js_cords_y').val(c.y);
+						$cropImg.parent().find('.js_cords_w').val(c.w);
+						$cropImg.parent().find('.js_cords_h').val(c.h);
+					}
+				});
+			});
+		};
+		Asset.css('http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.min.css', {
+			onLoad: function(){
+				Asset.javascript('http://edge1u.tapmodo.com/global/js/jquery.min.js', {
+					onLoad: function(){
+						Asset.javascript('http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js', {
+							onLoad: cropInit
+						});
+					}
+				});
+			}
+		});
+	}
+	
 });

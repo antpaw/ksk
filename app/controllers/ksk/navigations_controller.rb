@@ -9,7 +9,7 @@ class Ksk::NavigationsController < Bhf::ApplicationController
   def create
     n = Navigation.new(params_navigation)
     n.save
-    render :text => n.id
+    render text: n.id
   end
   
   private

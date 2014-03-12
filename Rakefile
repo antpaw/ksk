@@ -21,6 +21,7 @@ begin
     gem.rubyforge_project = 'nowarning'
     gem.add_dependency 'bhf', '>= 0.6.13'
     gem.add_dependency 'stringex'
+    gem.add_dependency 'paperclip', '>= 4.0.0'
   end
 
   Jeweler::GemcutterTasks.new

@@ -11,7 +11,9 @@ module Ksk
 
       has_one :preview
       before_create :set_last_position
-
+      
+      after_initialize :resize_attr_accessors
+      before_save :crop_thumbs, if: :cropping?
 
       #validates_attachment :file, :content_type => { :content_type => IMGTYPE }
       IMGTYPE = ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png', 'image/tif', 'image/gif']
@@ -25,7 +27,48 @@ module Ksk
 
       before_file_post_process :allow_only_images
     end
-
+    
+    def resize_attr_accessors
+      file.styles.each_pair do |style, meta|
+        self.class.send(:attr_accessor, "#{style}_x")
+        self.class.send(:attr_accessor, "#{style}_y")
+        self.class.send(:attr_accessor, "#{style}_w")
+        self.class.send(:attr_accessor, "#{style}_h")
+      end
+    end
+    
+    def cropping?
+      needs_crop = false
+      file.styles.each_pair do |style, meta|
+        if !needs_crop
+          needs_crop = cords_set?(style)
+        end
+      end
+      needs_crop
+    end
+    
+    def cords_set?(style)
+      !send("#{style}_x").blank? && !send("#{style}_y").blank? && !send("#{style}_w").blank? && !send("#{style}_h").blank?
+    end
+    
+    def crop_thumbs
+      file.styles.each_pair do |style, meta|
+        if cords_set?(style)
+          resize_banner style, [send("#{style}_x"), send("#{style}_y"), send("#{style}_w"), send("#{style}_h")], meta.attachment.options[:styles][style][0]
+          send("#{style}_x=", false)
+        end
+      end
+      file.save
+      file.instance.save
+    end
+    
+    def resize_banner(name, cords, resize)
+      file.queued_for_write[name] = Paperclip.processor(:ksk_crop).make(file, cords, file)
+      style = Paperclip::Style.new(name, [resize, :jpg], file)
+      file.queued_for_write[name] = Paperclip.processor(:thumbnail).make(file.queued_for_write[name], style.processor_options, file.queued_for_write[name])
+      file.queued_for_write[name] = Paperclip.io_adapters.for(file.queued_for_write[name])
+    end
+    
 
     def allow_only_images
       if !(file.content_type =~ %r{^(image|(x-)?application)/(x-png|pjpeg|jpeg|jpg|png|gif)$})

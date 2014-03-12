@@ -1,0 +1,18 @@
+- return if @quick_edit
+- style = :banner
+- f.object.file.styles.each_pair do |style, meta|
+  .node{class: field.form_type}
+    .label= f.label "crop_#{style}", f.object.class.human_attribute_name("crop_#{style}")
+    .input
+        
+      = image_tag f.object.file.url(:original), class: 'js_crop_image'
+
+      = f.hidden_field "#{style}_x", class: 'js_cords_x'
+      = f.hidden_field "#{style}_y", class: 'js_cords_y'
+      = f.hidden_field "#{style}_w", class: 'js_cords_w'
+      = f.hidden_field "#{style}_h", class: 'js_cords_h'
+  
+      %div{style: 'margin-top: 30px'}
+        = render partial: 'bhf/helper/field_errors', locals: {f: f, field: "crop_#{style}"}
+        = image_tag f.object.file.url(style), class: 'uploaded_image'
+        = render partial: 'bhf/helper/info', locals: {info: t("bhf.platforms.assets.infos.crop_#{style}", default: '')}
