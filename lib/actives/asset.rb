@@ -15,8 +15,8 @@ module Ksk
       after_initialize :resize_attr_accessors
       before_save :crop_thumbs, if: :cropping?
 
-      #validates_attachment :file, :content_type => { :content_type => IMGTYPE }
       IMGTYPE = ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png', 'image/tif', 'image/gif']
+      validates_attachment_content_type :file, :content_type => /.*/
 
       scope :only_images, -> {where(file_content_type: IMGTYPE)}
       scope :first_image, -> {only_images.limit(1)}
