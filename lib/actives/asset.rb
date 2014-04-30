@@ -16,7 +16,7 @@ module Ksk
       before_save :crop_thumbs, if: :cropping?
 
       IMGTYPE = ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png', 'image/tif', 'image/gif']
-      validates_attachment_content_type :file, :content_type => /.*/
+      do_not_validate_attachment_file_type :file
 
       scope :only_images, -> {where(file_content_type: IMGTYPE)}
       scope :first_image, -> {only_images.limit(1)}
