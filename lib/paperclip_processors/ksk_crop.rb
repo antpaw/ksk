@@ -12,17 +12,21 @@ module Paperclip
     def make
       src = @file
       dst = Tempfile.new([@basename, @format])
-      return unless File.exists?(src.path)
       dst.binmode
-        
-        parameters = []
-        parameters << ":source"
-        parameters << "-crop '#{@crop[2]}x#{@crop[3]}+#{@crop[0]}+#{@crop[1]}'"
-        parameters << ":dest"
+      
+      parameters = []
+      parameters << ":source"
+      parameters << "-crop '#{@crop[2]}x#{@crop[3]}+#{@crop[0]}+#{@crop[1]}'"
+      parameters << ":dest"
 
-        parameters = parameters.flatten.compact.join(' ').strip.squeeze(' ')
-
-        success = Paperclip.run('convert', parameters, source: "#{File.expand_path(src.path)}[0]", dest: File.expand_path(dst.path))
+      parameters = parameters.flatten.compact.join(' ').strip.squeeze(' ')
+      
+      path = if @file.options && @file.options[:storage] == :s3
+        src.url
+      else
+        File.expand_path(src.path)
+      end
+      success = Paperclip.run('convert', parameters, source: path, dest: File.expand_path(dst.path))
 
       dst
     end
