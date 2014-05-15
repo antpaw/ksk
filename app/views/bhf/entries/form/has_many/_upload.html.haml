@@ -7,14 +7,15 @@
       = a.check_box :_destroy
       = a.label :_destroy, t(asset.is_image? ? 'bhf.helpers.image.delete' : 'bhf.helpers.file.delete')
 
+    - return_to = {return_to: (edit_entry_path(@platform.name, f.object) unless @platform.return_to == false)}
     - if asset.is_image?
       = image_tag(asset.file.url(:medium), class: 'uploaded_image float_left')
-      = link_to t('ksk.asset.image_preview.button.edit'), edit_entry_path('assets', asset.id), class: 'alt_button float_right'
+      = link_to t('ksk.asset.image_preview.button.edit'), edit_entry_path('assets', asset.id, return_to), class: 'alt_button float_right'
     - else
       = link_to asset.file_file_name, asset.file.url, class: 'uploaded_file float_left'
       - if asset.has_preview?
-        = link_to t('ksk.asset.file_preview.button.edit'), edit_entry_path('previews', asset.preview), class: 'alt_button float_right'
+        = link_to t('ksk.asset.file_preview.button.edit'), edit_entry_path('previews', asset.preview, return_to), class: 'alt_button float_right'
       - else
-        = link_to t('ksk.asset.file_preview.button.create'), new_entry_path('previews', asset_id: asset.id), class: 'alt_button float_right'
+        = link_to t('ksk.asset.file_preview.button.create'), new_entry_path('previews', {asset_id: asset.id}.merge(return_to)), class: 'alt_button float_right'
 
     .clear

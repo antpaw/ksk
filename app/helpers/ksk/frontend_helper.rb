@@ -36,9 +36,10 @@ module Ksk
     def place_content(text, files, type, &html)
       t = text
       (text || '').scan(Apdown.parse_regex(type)).each do |match|
-        if asset = files[match[1].to_i-1]
-          t = t.gsub(match[0], html.call(asset, match[2]))
+        relpace = if asset = files[match[1].to_i-1]
+          html.call(asset, match[2])
         end
+        t = t.gsub(match[0], relpace.to_s)
       end
       t.html_safe
     end

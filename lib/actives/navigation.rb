@@ -1,4 +1,3 @@
-# encoding: UTF-8
 module Ksk
   module Navigation
     extend ActiveSupport::Concern
@@ -14,8 +13,8 @@ module Ksk
 
       belongs_to :static
       belongs_to :navigation_type
-      belongs_to :parent, :foreign_key => 'parent_id', :class_name => 'Navigation'
-      has_many   :children, :foreign_key => 'parent_id', :class_name => 'Navigation', :dependent => :delete_all
+      belongs_to :parent, foreign_key: 'parent_id', class_name: 'Navigation'
+      has_many   :children, foreign_key: 'parent_id', class_name: 'Navigation', dependent: :delete_all
 
       scope :top_level, -> {where(parent_id: 0)}
 
