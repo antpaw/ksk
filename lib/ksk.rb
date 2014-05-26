@@ -5,8 +5,8 @@ module Ksk
     
     isolate_namespace Ksk
     
-    config.css << 'ksk/application'
-    config.js << 'ksk/application'
+    config.bhf.css << 'ksk/application'
+    config.bhf.js << 'ksk/application'
     
     initializer 'ksk.action_controller' do |app|
       ActiveSupport.on_load :action_controller do
