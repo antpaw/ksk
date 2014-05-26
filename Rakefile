@@ -19,9 +19,9 @@ begin
     gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*", "vendor/assets/**/*"]
     gem.homepage = 'http://github.com/antpaw/ksk'
     gem.rubyforge_project = 'nowarning'
-    gem.add_dependency 'bhf', '>= 0.6.13'
-    gem.add_dependency 'stringex'
-    gem.add_dependency 'paperclip', '>= 4.0.0'
+    gem.add_dependency 'bhf', '~> 0.7'
+    gem.add_dependency 'stringex', '~> 2.5'
+    gem.add_dependency 'paperclip', '~> 4.0'
   end
 
   Jeweler::GemcutterTasks.new
