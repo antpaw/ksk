@@ -1,5 +1,3 @@
-require 'stringex'
-
 module Ksk
   class Engine < Rails::Engine
     
@@ -8,7 +6,7 @@ module Ksk
     config.bhf.css << 'ksk/application'
     config.bhf.js << 'ksk/application'
     
-    initializer 'ksk.action_controller' do |app|
+    initializer 'ksk.helper' do
       ActiveSupport.on_load :action_controller do
         helper Ksk::FrontendHelper
       end
@@ -17,13 +15,6 @@ module Ksk
   end
 end
 
-require 'apdown'
-require 'actives/asset'
-require 'actives/category'
-require 'actives/navigation'
-require 'actives/navigation_type'
-require 'actives/post'
-require 'actives/preview'
-require 'actives/static'
+require 'stringex'
 require 'paperclip/processor'
 require 'paperclip_processors/ksk_crop'

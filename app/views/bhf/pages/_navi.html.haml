@@ -3,7 +3,7 @@
     a = "\n <#{ul}#{first_wrap}>\n"
     navis.each do |navi|
       x = link_to 'edit', edit_entry_path('navigation', navi), class: 'edit icon'
-      y = link_to 'delete', entry_path('navigation', navi), :method => :delete, :confirm => t('bhf.helpers.promts.confirm'), class: 'delete icon'
+      y = link_to 'delete', entry_path('navigation', navi), method: :delete, confirm: t('bhf.helpers.promts.confirm'), class: 'delete icon'
       a += " <li id='navigation_#{navi.id}'><div><span class='title'>#{navi.title}</span> <span class='links'>#{x} #{y}</span></div>"
       if current_level <= max_level and navi.children.any?
         a += p_recursive_navi(navi.children, current_level+1, max_level, ul)
