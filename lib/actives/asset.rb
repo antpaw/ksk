@@ -22,7 +22,7 @@ module Ksk
       scope :first_image, -> {only_images.limit(1)}
       scope :other_images, -> {only_images.offset(1)}
 
-      scope :only_data_files, -> {where(['file_content_type not in (?)', IMGTYPE])}
+      scope :only_data_files, -> {where('file_content_type not in (?)', IMGTYPE)}
       scope :first_data_files, -> {only_data_files.limit(1)}
 
       before_file_post_process :allow_only_images
@@ -99,7 +99,7 @@ module Ksk
     end
     
     def set_last_position
-      self.position = self.class.where(fileable_id: self.fileable_id).count+1
+      self.position = self.class.where(fileable_id: self.fileable_id).count + 1
     end
     
   end
