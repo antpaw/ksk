@@ -12,17 +12,16 @@ module Ksk::Asset
     after_initialize :resize_attr_accessors
     before_save :crop_thumbs, if: :cropping?
 
-    IMGTYPE = ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png', 'image/tif', 'image/gif']
     do_not_validate_attachment_file_type :file
 
-    scope :only_images, -> {where(file_content_type: IMGTYPE)}
+    scope :only_images, -> {where(file_content_type: Bhf::PAPERCLIP_IMAGE_TYPES)}
     scope :first_image, -> {only_images.limit(1)}
     scope :other_images, -> {only_images.offset(1)}
 
-    scope :only_data_files, -> {where('file_content_type not in (?)', IMGTYPE)}
+    scope :only_data_files, -> {where('file_content_type not in (?)', Bhf::PAPERCLIP_IMAGE_TYPES)}
     scope :first_data_files, -> {only_data_files.limit(1)}
 
-    before_file_post_process :allow_only_images
+    before_file_post_process :is_image?
   end
   
   def resize_attr_accessors
@@ -66,15 +65,8 @@ module Ksk::Asset
     file.queued_for_write[name] = Paperclip.io_adapters.for(file.queued_for_write[name])
   end
   
-
-  def allow_only_images
-    if !(file.content_type =~ %r{^(image|(x-)?application)/(x-png|pjpeg|jpeg|jpg|png|gif)$})
-      return false
-    end
-  end 
-
   def is_image?
-    IMGTYPE.include?(file.content_type)
+    Bhf::PAPERCLIP_IMAGE_TYPES.include?(file.content_type)
   end
 
   def has_preview?
