@@ -1,6 +1,6 @@
 = node f, field do
   - if f.object.file.file?
     - if f.object.is_image?
-      = image_tag f.object.file.url(:thumb), class: :uploaded_image
+      = image_tag find_smallest_size_url_for_file(f.object.file), class: :uploaded_image
     - else
       = link_to f.object.file_file_name, f.object.file.url, class: :uploaded_file
