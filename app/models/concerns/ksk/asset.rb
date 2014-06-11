@@ -14,11 +14,11 @@ module Ksk::Asset
 
     do_not_validate_attachment_file_type :file
 
-    scope :only_images, -> {where(file_content_type: Bhf::PAPERCLIP_IMAGE_TYPES)}
+    scope :only_images, -> {where(file_content_type: Bhf.configuration.paperclip_image_types)}
     scope :first_image, -> {only_images.limit(1)}
     scope :other_images, -> {only_images.offset(1)}
 
-    scope :only_data_files, -> {where('file_content_type not in (?)', Bhf::PAPERCLIP_IMAGE_TYPES)}
+    scope :only_data_files, -> {where('file_content_type not in (?)', Bhf.configuration.paperclip_image_types)}
     scope :first_data_files, -> {only_data_files.limit(1)}
 
     before_file_post_process :is_image?
@@ -66,7 +66,7 @@ module Ksk::Asset
   end
   
   def is_image?
-    Bhf::PAPERCLIP_IMAGE_TYPES.include?(file.content_type)
+    Bhf.configuration.paperclip_image_types.include?(file.content_type)
   end
 
   def has_preview?
