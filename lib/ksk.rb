@@ -3,8 +3,10 @@ module Ksk
     
     isolate_namespace Ksk
     
-    config.bhf.css << 'ksk/application'
-    config.bhf.js << 'ksk/application'
+    Bhf.configure do |config|
+      config.css << 'ksk/application'
+      config.js << 'ksk/application'
+    end
     
     initializer 'ksk.helper' do
       ActiveSupport.on_load :action_controller do
