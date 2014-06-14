@@ -41,24 +41,7 @@ initHelper(function(scope){
 				}
 			}).post(queryParams);
 		});
-	});
-
-	scope.getElements('.assets_list').each(function(elem){
-		new Sortables(elem, {
-			handle: '.handle',
-			onStart: function(element, clone){
-				element.addClass('dragged');
-			},
-			onComplete: function(element){
-				element.removeClass('dragged');
-				new Request({
-					method: 'put',
-					url: this.element.getParent('ol').get('data-sort-url')
-				}).send({data: {order: this.serialize()}});
-			}
-		});
-	});
-	
+	});	
 	
 	cropImages = scope.getElements('.js_crop_image');
 	if (cropImages.length) {
