@@ -6,7 +6,7 @@
       %ol.assets_list.js_sortable{data: {sort_url: sort_entries_path('assets')}}
         - imgs.each do |asset|
           %li{id: "#{asset.id}_images"}
-            = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: !@quick_edit}
+            = render partial: 'bhf/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: !@quick_edit}
     
     - files = f.object.assets.only_data_files
     - if files.any?
@@ -14,7 +14,7 @@
       %ol.assets_list.js_sortable{data: {sort_url: sort_entries_path('assets')}}
         - files.each do |asset|
           %li{id: "#{asset.id}_data_files"}
-            = render partial: 'bhf/entries/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: !@quick_edit}
+            = render partial: 'bhf/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: !@quick_edit}
 
   .clear
 - unless @quick_edit
