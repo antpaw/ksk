@@ -1,5 +1,4 @@
 - return if @quick_edit
-- style = :banner
 - f.object.file.styles.each_pair do |style, meta|
   .node{class: field.form_type}
     .label= f.label "crop_#{style}", f.object.class.human_attribute_name("crop_#{style}")
