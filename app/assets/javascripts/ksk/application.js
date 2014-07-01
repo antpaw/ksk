@@ -50,7 +50,9 @@ initHelper(function(scope){
 			jQuery('.js_crop_image').each(function(){
 				var $cropImg = jQuery(this);
 				$cropImg.Jcrop({
-					onSelect: function(c){
+					boxWidth: 800,
+          boxHeight: 800,
+          onSelect: function(c){
 						$cropImg.parent().find('.js_cords_x').val(c.x);
 						$cropImg.parent().find('.js_cords_y').val(c.y);
 						$cropImg.parent().find('.js_cords_w').val(c.w);
