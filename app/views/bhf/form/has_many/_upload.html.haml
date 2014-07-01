@@ -9,7 +9,8 @@
 
     - return_to = {return_to: edit_entry_path(@platform.name, f.object)}
     - if asset.is_image?
-      = image_tag(find_smallest_size_url_for_file(asset.file), class: 'uploaded_image float_left')
+      = link_to asset.file.url, target: :blank do
+        = image_tag(find_smallest_size_url_for_file(asset.file), class: 'uploaded_image float_left')
       = link_to t('ksk.asset.image_preview.button.edit'), edit_entry_path('assets', asset.id, return_to), class: 'alt_button float_right'
     - else
       = link_to asset.file_file_name, asset.file.url, class: 'uploaded_file float_left'
