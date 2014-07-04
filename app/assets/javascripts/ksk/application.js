@@ -1,6 +1,7 @@
 //= require_tree ./classes
 
-initHelper(function(scope){
+window.addEvent('bhfDomChunkReady', function(scope){
+  
 	scope.getElements('.js_tree_holder').each(function(elem){
 		var naviA = new NaviAdmin({
 			elemTree: elem.getElement('.js_tree_list'),
