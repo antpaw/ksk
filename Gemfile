@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'bhf',          '~> 0.8'
+gem 'bhf',          '~> 0.9'
 gem 'stringex',     '~> 2.5'
 gem 'paperclip',    '~> 4.0'
 

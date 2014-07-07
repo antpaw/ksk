@@ -29,10 +29,10 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
-    bhf (0.8.0)
+    bhf (0.9.0)
       haml-rails (~> 0.4)
       kaminari (~> 0.15)
-      rails (~> 4.1.1)
+      rails (~> 4)
       sass-rails (~> 4.0)
       turbolinks (~> 2.1)
     builder (3.2.2)
@@ -51,7 +51,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     docile (1.1.3)
     erubis (2.7.0)
-    execjs (2.2.0)
+    execjs (2.2.1)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     git (1.2.7)
@@ -174,7 +174,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bhf (~> 0.8)
+  bhf (~> 0.9)
   bundler (~> 1.0)
   jeweler (~> 2.0)
   paperclip (~> 4.0)
