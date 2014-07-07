@@ -17,10 +17,14 @@
             = render partial: 'bhf/form/has_many/upload', locals: {field: field, f: f, asset: asset, allow_position: !@quick_edit}
 
   .clear
+
 - unless @quick_edit
   = node f, field do
     .array_holder
       = f.fields_for field.name, Asset.new do |a|
-        = a.file_field :file
+        %a.qe_button.array_fields.ninja_file_field_holder.default_form_align{data: {empty_field_text: t('bhf.helpers.form.file_field.select')}}
+          %span.h_text= t('bhf.helpers.form.file_field.select')
+          = a.file_field :file, class: 'ninja_file_field', id: nil
+        
 
 

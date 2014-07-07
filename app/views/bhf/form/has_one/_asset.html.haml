@@ -4,6 +4,8 @@
       - if ! f.object.send(field.name).nil?
         = render partial: 'bhf/form/has_many/upload', locals: {field: field, f: f, asset: f.object.send(field.name), allow_position: false}
       %div
-      = a.file_field :file
+      %a.qe_button.ninja_file_field_holder.default_form_align{data: {empty_field_text: t('bhf.helpers.form.file_field.select')}}
+        %span.h_text= t('bhf.helpers.form.file_field.select')
+        = a.file_field :file, class: 'ninja_file_field'
       %hr
 
