@@ -1,0 +1,18 @@
+- style_name = "#{meta.attachment.name}_#{style}"
+- image = f.object.send(meta.attachment.name)
+- if image.exists?
+  .node{class: field.form_type}
+    .label= f.label "#{style_name}_crop", f.object.class.human_attribute_name("#{style_name}_crop")
+    .input
+      = image_tag image.url(:original), class: 'js_crop_image', data: {crop_style: meta.geometry}
+
+      = f.hidden_field "#{style_name}_x", class: 'js_cords_x'
+      = f.hidden_field "#{style_name}_y", class: 'js_cords_y'
+      = f.hidden_field "#{style_name}_w", class: 'js_cords_w'
+      = f.hidden_field "#{style_name}_h", class: 'js_cords_h'
+
+      - if image.exists?(style)
+        %div{style: 'margin-top: 30px'}
+          = render partial: 'bhf/helper/field_errors', locals: {f: f, field: "#{style_name}_crop"}
+          = image_tag image.url(style), class: 'uploaded_image'
+          = render partial: 'bhf/helper/info', locals: {info: t("bhf.platforms.assets.infos.#{style_name}_crop", default: '')}

@@ -12,7 +12,6 @@ window.addEvent('bhfDomChunkReady', function(scope){
 					parent_id: parentId
 				};
 				queryParams[this.getNaviName()] = this.getIdPositions();
-
 				new Request({
 					url: elem.get('data-update-url')
 				}).post(queryParams);
@@ -24,7 +23,6 @@ window.addEvent('bhfDomChunkReady', function(scope){
 			var tmpl = platform.getElement('.template_data');
 			var name = prompt(tmpl.get('data-prompt-question'), '');
 			if ( ! name) { return; }
-
 			var naviName = naviA.getNaviName();
 			var queryParams = {};
 			queryParams[naviName] = {
@@ -50,10 +48,23 @@ window.addEvent('bhfDomChunkReady', function(scope){
 			$.noConflict();
 			jQuery('.js_crop_image').each(function(){
 				var $cropImg = jQuery(this);
+				var minWidth, minHeight;
+				var styleGeo = $cropImg.attr('data-crop-style') || '';
+				var styleGeoArray = styleGeo.split('x');
+				if (styleGeoArray.length === 2) {
+					if ( ! styleGeo.match('<') && ! styleGeo.match('>')) {
+						minWidth  = parseInt(styleGeoArray[0], 10);
+						minHeight = parseInt(styleGeoArray[1], 10);
+					}
+				}
+				var hasSize = minWidth && minHeight;
+				
 				$cropImg.Jcrop({
-					boxWidth: 800,
-          boxHeight: 800,
-          onSelect: function(c){
+					// minSize:  (hasSize ? [minWidth, minHeight]  : undefined),
+					aspectRatio: (hasSize ? (minWidth / minHeight) : undefined),
+					boxWidth:    800,
+					boxHeight:   800,
+					onSelect: function(c){
 						$cropImg.parent().find('.js_cords_x').val(c.x);
 						$cropImg.parent().find('.js_cords_y').val(c.y);
 						$cropImg.parent().find('.js_cords_w').val(c.w);
