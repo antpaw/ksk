@@ -1,6 +1,15 @@
 # ksk
 
-CMS for [bhf](http://antpaw.github.io/bhf/)
+Blog/Website management plugin for [bhf](http://antpaw.github.io/bhf/).
+
+
+## Usage
+
+* The abstract [settings `.yml`](https://github.com/antpaw/ksk/tree/master/config/bhf/ksk.yml)
+  ([learn how to use it in your own settings `.yml`](x))
+* Include this [concerns](https://github.com/antpaw/ksk/tree/master/app/models/concerns/ksk) to your models.
+* Use this [partials](https://github.com/antpaw/ksk/tree/master/app/views/bhf), for example to crop paperclip images.
+
 
 ## Contributing to ksk
  
@@ -9,11 +18,14 @@ CMS for [bhf](http://antpaw.github.io/bhf/)
 * Fork the project.
 * Start a feature/bugfix branch.
 * Commit and push until you are happy with your contribution.
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+## Support
+
+<p><a href='https://pledgie.com/campaigns/25956'><img alt='Click here to lend your support to: bhf and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/25956.png?skin_name=chrome' border='0' ></a></p>
+
 
 ## Copyright
 
 Copyright (c) 2014 Anton Pawlik. See LICENSE.txt for
 further details.
-
