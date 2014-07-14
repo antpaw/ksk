@@ -16,8 +16,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = 'ksk'
   gem.homepage = 'http://github.com/antpaw/ksk'
   gem.licenses = 'MIT'
-  gem.summary = 'CMS for bhf'
-  gem.description = 'Fast and friendly'
+  gem.summary = 'Blog/Website management plugin for bhf'
+  gem.description = 'Blog/Website management plugin for bhf. Includes abstract settings .yml, model concerns and bhf view partials.'
   gem.email = 'anton.pawlik@gmail.com'
   gem.authors = ['Anton Pawlik']
 end

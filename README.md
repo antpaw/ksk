@@ -6,7 +6,7 @@ Blog/Website management plugin for [bhf](http://antpaw.github.io/bhf/).
 ## Usage
 
 * The abstract [settings `.yml`](https://github.com/antpaw/ksk/tree/master/config/bhf/ksk.yml)
-  ([learn how to use it in your own settings `.yml`](x))
+  ([learn how to use it in your own settings `.yml`](http://antpaw.github.io/bhf/#abstract_platform_settings))
 * Include this [concerns](https://github.com/antpaw/ksk/tree/master/app/models/concerns/ksk) to your models.
 * Use this [partials](https://github.com/antpaw/ksk/tree/master/app/views/bhf), for example to crop paperclip images.
 
