@@ -1,0 +1,55 @@
+pages:
+- abstract:
+  - posts:
+      table:
+        source: all_posts
+        columns: [id, headline, published, updated_at, created_at]
+        types:
+          comments: blog_comments_link
+      form:
+        display: [id, headline, subheadline, category, content, published, assets]
+        multipart: true
+        types:
+          assets: assets
+          content: markdown
+          
+  - category:
+      table:
+        columns: [id, title, updated_at, created_at]
+
+  - statics:
+      table:
+        columns: [id, title, content, updated_at, created_at]
+        per_page: 30
+      form:
+        display: [id, title, content, assets]
+        multipart: true
+        types:
+          assets: assets
+          content: markdown
+
+  - navigation:
+      table:
+        partial: navigation_tree
+      form:
+        display: [id, slug, title, link, static, children, hidden]
+        links:
+          children: navigation
+        types:
+          link: static
+
+  - previews:
+      table:
+        columns: [id, asset, name, updated_at, created_at]
+        per_page: 30
+      form:
+        display: [id, select_file_assets, name, assets]
+        multipart: true
+        types:
+          assets: assets
+
+  - assets:
+      table:
+        columns: [id, file_file_name, file_content_type, updated_at]
+      form:
+        display: [id, crop_thumbs]
