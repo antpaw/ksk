@@ -4,7 +4,7 @@ module Ksk::Asset
   included do
     belongs_to :fileable, polymorphic: true
 
-    default_scope -> { order('position ASC, created_at DESC') }
+    default_scope -> { order('position ASC, created_at ASC') }
 
     has_one :preview
     before_create :set_last_position
