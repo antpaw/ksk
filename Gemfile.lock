@@ -29,7 +29,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.6)
     arel (5.0.1.20140414130214)
-    bhf (0.9.7)
+    bhf (0.9.8)
       haml-rails (~> 0.4)
       kaminari (~> 0.16)
       rails (~> 4)
