@@ -46,7 +46,7 @@ window.addEvent('bhfDomChunkReady', function(scope){
 	if (cropImages.length) {
 		var cropInit = function(){
 			$.noConflict();
-			jQuery('.js_crop_image').each(function(){
+			jQuery('.js_crop_image', scope).each(function(){
 				var $cropImg = jQuery(this);
 				var minWidth, minHeight;
 				var styleGeo = $cropImg.attr('data-crop-style') || '';
