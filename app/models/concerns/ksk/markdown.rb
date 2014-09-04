@@ -10,13 +10,14 @@ module Ksk::Markdown
   def text_unused_content(all_files, type, preselected = [])
     all_numbers = []
     all_files.each_with_index { |a, i| all_numbers << i+1 }
-  
+    
     unused_numbers = all_numbers - (text_used_content(type)+preselected)
-  
+    
     unused_files = []
     all_files.each_with_index do |a, i|
       unused_files << a if unused_numbers.include?(i+1)
     end
+    
     unused_files
   end
 
