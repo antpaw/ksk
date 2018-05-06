@@ -5,15 +5,15 @@
 # stub: ksk 0.4.6 ruby lib
 
 Gem::Specification.new do |s|
-  s.name = "ksk"
+  s.name = "ksk".freeze
   s.version = "0.4.6"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.require_paths = ["lib"]
-  s.authors = ["Anton Pawlik"]
-  s.date = "2015-02-25"
-  s.description = "Blog/Website management plugin for bhf. Includes abstract settings .yml, model concerns and bhf view partials."
-  s.email = "anton.pawlik@gmail.com"
+  s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
+  s.require_paths = ["lib".freeze]
+  s.authors = ["Anton Pawlik".freeze]
+  s.date = "2018-05-06"
+  s.description = "Blog/Website management plugin for bhf. Includes abstract settings .yml, model concerns and bhf view partials.".freeze
+  s.email = "anton.pawlik@gmail.com".freeze
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.md"
@@ -56,42 +56,42 @@ Gem::Specification.new do |s|
     "lib/ksk.rb",
     "lib/paperclip_processors/ksk_crop.rb"
   ]
-  s.homepage = "http://github.com/antpaw/ksk"
-  s.licenses = ["MIT"]
-  s.rubygems_version = "2.2.2"
-  s.summary = "Blog/Website management plugin for bhf"
+  s.homepage = "http://github.com/antpaw/ksk".freeze
+  s.licenses = ["MIT".freeze]
+  s.rubygems_version = "2.6.13".freeze
+  s.summary = "Blog/Website management plugin for bhf".freeze
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<bhf>, ["~> 0"])
-      s.add_runtime_dependency(%q<stringex>, ["~> 2"])
-      s.add_runtime_dependency(%q<paperclip>, ["~> 4"])
-      s.add_development_dependency(%q<shoulda>, ["~> 3"])
-      s.add_development_dependency(%q<rdoc>, ["~> 3"])
-      s.add_development_dependency(%q<bundler>, ["~> 1"])
-      s.add_development_dependency(%q<jeweler>, ["~> 2"])
-      s.add_development_dependency(%q<simplecov>, ["~> 0"])
+      s.add_runtime_dependency(%q<bhf>.freeze, [">= 0"])
+      s.add_runtime_dependency(%q<stringex>.freeze, [">= 2"])
+      s.add_runtime_dependency(%q<paperclip>.freeze, [">= 4"])
+      s.add_development_dependency(%q<shoulda>.freeze, [">= 3"])
+      s.add_development_dependency(%q<rdoc>.freeze, [">= 3"])
+      s.add_development_dependency(%q<bundler>.freeze, [">= 1"])
+      s.add_development_dependency(%q<jeweler>.freeze, [">= 2"])
+      s.add_development_dependency(%q<simplecov>.freeze, [">= 0"])
     else
-      s.add_dependency(%q<bhf>, ["~> 0"])
-      s.add_dependency(%q<stringex>, ["~> 2"])
-      s.add_dependency(%q<paperclip>, ["~> 4"])
-      s.add_dependency(%q<shoulda>, ["~> 3"])
-      s.add_dependency(%q<rdoc>, ["~> 3"])
-      s.add_dependency(%q<bundler>, ["~> 1"])
-      s.add_dependency(%q<jeweler>, ["~> 2"])
-      s.add_dependency(%q<simplecov>, ["~> 0"])
+      s.add_dependency(%q<bhf>.freeze, [">= 0"])
+      s.add_dependency(%q<stringex>.freeze, [">= 2"])
+      s.add_dependency(%q<paperclip>.freeze, [">= 4"])
+      s.add_dependency(%q<shoulda>.freeze, [">= 3"])
+      s.add_dependency(%q<rdoc>.freeze, [">= 3"])
+      s.add_dependency(%q<bundler>.freeze, [">= 1"])
+      s.add_dependency(%q<jeweler>.freeze, [">= 2"])
+      s.add_dependency(%q<simplecov>.freeze, [">= 0"])
     end
   else
-    s.add_dependency(%q<bhf>, ["~> 0"])
-    s.add_dependency(%q<stringex>, ["~> 2"])
-    s.add_dependency(%q<paperclip>, ["~> 4"])
-    s.add_dependency(%q<shoulda>, ["~> 3"])
-    s.add_dependency(%q<rdoc>, ["~> 3"])
-    s.add_dependency(%q<bundler>, ["~> 1"])
-    s.add_dependency(%q<jeweler>, ["~> 2"])
-    s.add_dependency(%q<simplecov>, ["~> 0"])
+    s.add_dependency(%q<bhf>.freeze, [">= 0"])
+    s.add_dependency(%q<stringex>.freeze, [">= 2"])
+    s.add_dependency(%q<paperclip>.freeze, [">= 4"])
+    s.add_dependency(%q<shoulda>.freeze, [">= 3"])
+    s.add_dependency(%q<rdoc>.freeze, [">= 3"])
+    s.add_dependency(%q<bundler>.freeze, [">= 1"])
+    s.add_dependency(%q<jeweler>.freeze, [">= 2"])
+    s.add_dependency(%q<simplecov>.freeze, [">= 0"])
   end
 end
 
