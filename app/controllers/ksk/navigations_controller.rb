@@ -8,14 +8,17 @@ class Ksk::NavigationsController < Bhf::ApplicationController
 
   def create
     n = Navigation.new(params_navigation)
-    n.save
-    render text: n.id
+    if n.save
+      render json: {id: n.id}
+    else
+      render status: 400, json: n.errors
+    end
   end
   
   private
     def params_navigation
-      ActionController::Parameters.new(params[:navigation]).permit!
+      a = params.require(:navigation).permit(:title)
+      a
     end
 
 end
-

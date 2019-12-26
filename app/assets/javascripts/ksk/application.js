@@ -1,7 +1,7 @@
 //= require_tree ./classes
 
 window.addEvent('bhfDomChunkReady', function(scope){
-  
+
 	scope.getElements('.js_tree_holder').each(function(elem){
 		var naviA = new NaviAdmin({
 			elemTree: elem.getElement('.js_tree_list'),
@@ -31,17 +31,18 @@ window.addEvent('bhfDomChunkReady', function(scope){
 			new Request({
 				url: platform.getElement('.template_data').get('data-update-path'),
 				onSuccess: function(responseText){
+					var newId = JSON.parse(responseText).id;
 					new Element('li', {
-					  'id': naviName+'_'+responseText,
-					  'html': '<div> <span class="title">'+name+'</span> <span class="links">'+tmpl.get('html')+'</span></div>'.replace(/NAVIID/g, responseText)
+					  'id': naviName+'_'+newId,
+					  'html': '<div> <span class="title">'+name+'</span> <span class="links">'+tmpl.get('html')+'</span></div>'.replace(/NAVIID/g, newId)
 					})
 					.inject(platform.getElement('.js_tree_list li'), 'before');
 					naviA.reInit();
 				}
 			}).post(queryParams);
 		});
-	});	
-	
+	});
+
 	cropImages = scope.getElements('.js_crop_image');
 	if (cropImages.length) {
 		var cropInit = function(){
@@ -58,7 +59,7 @@ window.addEvent('bhfDomChunkReady', function(scope){
 					}
 				}
 				var hasSize = minWidth && minHeight;
-				
+
 				$cropImg.Jcrop({
 					// minSize:  (hasSize ? [minWidth, minHeight]  : undefined),
 					aspectRatio: (hasSize ? (minWidth / minHeight) : undefined),
@@ -85,5 +86,5 @@ window.addEvent('bhfDomChunkReady', function(scope){
 			}
 		});
 	}
-	
+
 });

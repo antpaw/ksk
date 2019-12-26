@@ -162,9 +162,15 @@ var NaviAdmin = new Class({
 	},
 	
 	getNaviName: function(){
-		return this.getId(
-			this.elemTree.getElement('li.item').get('id')
-		).name || 'navigation';
+		var navigationElements = this.elemTree.getElement('li.item');
+		if (navigationElements && navigationElements.length) {
+			return this.getId(
+				navigationElements.get('id')
+			).name;
+		}
+		else {
+			return 'navigation';
+		}
 	},
 	
 	getIdPositions: function(){

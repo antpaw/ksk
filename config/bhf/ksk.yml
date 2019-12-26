@@ -11,8 +11,8 @@ pages:
         multipart: true
         types:
           assets: assets
-          content: markdown
-          
+          content: rich_text
+
   - category:
       table:
         columns: [id, title, updated_at, created_at]
@@ -22,11 +22,10 @@ pages:
         columns: [id, title, content, updated_at, created_at]
         per_page: 30
       form:
-        display: [id, title, content, assets]
+        display: [id, title, content]
         multipart: true
         types:
-          assets: assets
-          content: markdown
+          content: rich_text
 
   - navigation:
       table:
