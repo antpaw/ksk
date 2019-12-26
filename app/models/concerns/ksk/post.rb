@@ -2,7 +2,6 @@ module Ksk::Post
   extend ActiveSupport::Concern
 
   included do
-    include Ksk::Markdown
 
     belongs_to :category
     has_many :assets, as: :fileable

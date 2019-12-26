@@ -1,4 +1,4 @@
-module Ksk::PaperclipCrop
+module Ksk::ImageCrop
   extend ActiveSupport::Concern
   
   included do
@@ -50,10 +50,10 @@ module Ksk::PaperclipCrop
   def resize_banner(name, cords, resize)
     ksk_images_for_crop.each_pair do |image_name, style_names|
       image = send(image_name)
-      image.queued_for_write[name] = Paperclip.processor(:ksk_crop).make(image, cords, image)
-      style = Paperclip::Style.new(name, [resize, :jpg], image)
-      image.queued_for_write[name] = Paperclip.processor(:thumbnail).make(image.queued_for_write[name], style.processor_options, image.queued_for_write[name])
-      image.queued_for_write[name] = Paperclip.io_adapters.for(image.queued_for_write[name])
+      # image.queued_for_write[name] = Paperclip.processor(:ksk_crop).make(image, cords, image)
+      # style = Paperclip::Style.new(name, [resize, :jpg], image)
+      # image.queued_for_write[name] = Paperclip.processor(:thumbnail).make(image.queued_for_write[name], style.processor_options, image.queued_for_write[name])
+      # image.queued_for_write[name] = Paperclip.io_adapters.for(image.queued_for_write[name])
     end
   end
   

@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'bhf',          '>= 1.0.0.beta7'
 gem 'stringex',     '>= 2'
-gem 'paperclip',    '>= 4'
 
 
 group :development do

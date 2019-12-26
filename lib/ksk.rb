@@ -22,5 +22,3 @@ module Ksk
 end
 
 require 'stringex'
-require 'paperclip/processor'
-require 'paperclip_processors/ksk_crop'

@@ -11,7 +11,7 @@ module Ksk::Navigation
 
     belongs_to :static
     belongs_to :navigation_type
-    belongs_to :parent, foreign_key: 'parent_id', class_name: 'Navigation'
+    belongs_to :parent, foreign_key: 'parent_id', class_name: 'Navigation', optional: true
     has_many   :children, foreign_key: 'parent_id', class_name: 'Navigation', dependent: :delete_all
 
     scope :top_level, -> {where(parent_id: 0)}
@@ -20,7 +20,6 @@ module Ksk::Navigation
 
     before_save :set_slug, :set_link
   end
-
 
   def set_slug
     return if !slug.blank?

@@ -1,4 +1,4 @@
-module Paperclip
+module ImageProcessors
   
   class KskCrop < Processor
     
@@ -26,7 +26,7 @@ module Paperclip
       else
         File.expand_path(src.path)
       end
-      success = Paperclip.run('convert', parameters, source: path, dest: File.expand_path(dst.path))
+      # success = Paperclip.run('convert', parameters, source: path, dest: File.expand_path(dst.path))
 
       dst
     end

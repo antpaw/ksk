@@ -11,18 +11,18 @@ module Ksk::Asset
     
     do_not_validate_attachment_file_type :file
     before_file_post_process :is_image?
-    include Ksk::PaperclipCrop
+    include Ksk::ImageCrop
 
-    scope :only_images, -> {where(file_content_type: Bhf.configuration.paperclip_image_types)}
+    scope :only_images, -> {where(file_content_type: Bhf.configuration.image_types)}
     scope :first_image, -> {only_images.limit(1)}
     scope :other_images, -> {only_images.offset(1)}
 
-    scope :only_data_files, -> {where('file_content_type not in (?)', Bhf.configuration.paperclip_image_types)}
+    scope :only_data_files, -> {where('file_content_type not in (?)', Bhf.configuration.image_types)}
     scope :first_data_files, -> {only_data_files.limit(1)}
   end
   
   def is_image?
-    Bhf.configuration.paperclip_image_types.include?(file.content_type)
+    Bhf.configuration.image_types.include?(file.content_type)
   end
   
   
