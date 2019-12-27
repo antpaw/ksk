@@ -34,7 +34,7 @@ window.addEvent('bhfDomChunkReady', function(scope){
 					var newId = JSON.parse(responseText).id;
 					new Element('li', {
 					  'id': naviName+'_'+newId,
-					  'html': '<div> <span class="title">'+name+'</span> <span class="links">'+tmpl.get('html')+'</span></div>'.replace(/NAVIID/g, newId)
+					  'html': ('<div> <span class="title">'+name+'</span> <span class="links">'+tmpl.get('html')+'</span></div>').replace(/NAVIID/g, newId)
 					})
 					.inject(platform.getElement('.js_tree_list li'), 'before');
 					naviA.reInit();
