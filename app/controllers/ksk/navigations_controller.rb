@@ -1,24 +1,23 @@
 class Ksk::NavigationsController < Bhf::ApplicationController
 
   def sort
-    Navigation.sort_items(params_navigation)
+    Navigation.sort_items(params[:navigation])
     Navigation.find(params[:id]).update_attribute(:parent_id, params[:parent_id])
     head :ok
   end
 
   def create
-    n = Navigation.new(params_navigation)
-    if n.save
-      render json: {id: n.id}
+    navigation = Navigation.new(params_navigation)
+    if navigation.save
+      render json: {id: navigation.id}
     else
-      render status: 400, json: n.errors
+      render status: 400, json: navigation.errors
     end
   end
-  
+
   private
     def params_navigation
-      a = params.require(:navigation).permit(:title)
-      a
+      params.require(:navigation).permit(:title)
     end
 
 end
