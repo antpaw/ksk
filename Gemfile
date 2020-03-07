@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'bhf',          '>= 1.0.0.beta8'
+gem 'bhf',          '>= 1.0.0.beta11'
 gem 'stringex',     '>= 2'
 
 
